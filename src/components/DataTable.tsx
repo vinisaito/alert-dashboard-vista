@@ -53,10 +53,10 @@ const DataTable: React.FC<DataTableProps> = ({ data, filters }) => {
   });
 
   return (
-    <Card className="shadow-lg border-0 bg-white/80 backdrop-blur-sm">
+    <Card className="shadow-lg border-0 bg-gray-800/90 backdrop-blur-sm">
       <div className="p-6">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">Painel de Acionamento</h2>
+          <h2 className="text-2xl font-bold text-white">Painel de Acionamento</h2>
           <Button className="bg-blue-600 hover:bg-blue-700 text-white">
             Exportar dados
           </Button>
@@ -65,39 +65,39 @@ const DataTable: React.FC<DataTableProps> = ({ data, filters }) => {
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-gray-200">
-                <th className="text-left py-3 px-4 font-semibold text-gray-700">Alerta</th>
-                <th className="text-left py-3 px-4 font-semibold text-gray-700">Grupo</th>
-                <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
-                <th className="text-left py-3 px-4 font-semibold text-gray-700">Abertura</th>
-                <th className="text-left py-3 px-4 font-semibold text-gray-700">Sumário</th>
-                <th className="text-left py-3 px-4 font-semibold text-gray-700">Severidade</th>
-                <th className="text-left py-3 px-4 font-semibold text-gray-700">Acionado</th>
+              <tr className="border-b border-gray-600">
+                <th className="text-left py-3 px-4 font-semibold text-gray-200">Alerta</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-200">Grupo</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-200">Status</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-200">Abertura</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-200">Sumário</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-200">Severidade</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-200">Acionado</th>
               </tr>
             </thead>
             <tbody>
               {filteredData.map((row, index) => (
                 <tr 
                   key={row.id} 
-                  className={`border-b border-gray-100 hover:bg-gray-50 transition-colors ${
-                    index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'
+                  className={`border-b border-gray-700 hover:bg-gray-700/50 transition-colors ${
+                    index % 2 === 0 ? 'bg-gray-800/50' : 'bg-gray-700/30'
                   }`}
                 >
-                  <td className="py-3 px-4 text-sm text-gray-900 font-medium">{row.alerta}</td>
-                  <td className="py-3 px-4 text-sm text-gray-600">{row.grupo}</td>
+                  <td className="py-3 px-4 text-sm text-white font-medium">{row.alerta}</td>
+                  <td className="py-3 px-4 text-sm text-gray-300">{row.grupo}</td>
                   <td className="py-3 px-4">
                     <Badge className={`${getStatusColor(row.status)} border-0`}>
                       {row.status}
                     </Badge>
                   </td>
-                  <td className="py-3 px-4 text-sm text-gray-600">{row.abertura}</td>
-                  <td className="py-3 px-4 text-sm text-gray-600 max-w-xs truncate">
+                  <td className="py-3 px-4 text-sm text-gray-300">{row.abertura}</td>
+                  <td className="py-3 px-4 text-sm text-gray-300 max-w-xs truncate">
                     {row.sumario}
                   </td>
                   <td className="py-3 px-4">
                     <div className="flex items-center">
                       <div className={`w-3 h-3 rounded-full ${getSeverityColor(row.severidade)} mr-2`}></div>
-                      <span className="text-sm text-gray-700 capitalize">{row.severidade}</span>
+                      <span className="text-sm text-gray-200 capitalize">{row.severidade}</span>
                     </div>
                   </td>
                   <td className="py-3 px-4">
@@ -111,7 +111,7 @@ const DataTable: React.FC<DataTableProps> = ({ data, filters }) => {
           </table>
           
           {filteredData.length === 0 && (
-            <div className="text-center py-8 text-gray-500">
+            <div className="text-center py-8 text-gray-400">
               Nenhum resultado encontrado com os filtros aplicados.
             </div>
           )}
