@@ -43,12 +43,12 @@ const DataTable: React.FC<DataTableProps> = ({ data, filters }) => {
 
   const filteredData = data.filter(row => {
     return (
-      (!filters.alerta || row.alerta.toLowerCase().includes(filters.alerta.toLowerCase())) &&
-      (!filters.status || row.status === filters.status) &&
-      (!filters.grupo || row.grupo === filters.grupo) &&
-      (!filters.severidade || row.severidade === filters.severidade) &&
-      (!filters.acionado || (filters.acionado === 'sim' ? row.acionado : !row.acionado)) &&
-      (!filters.abertura || row.abertura.includes(filters.abertura))
+      (!filters.alerta || filters.alerta === '' || row.alerta.toLowerCase().includes(filters.alerta.toLowerCase())) &&
+      (!filters.status || filters.status === '' || row.status === filters.status) &&
+      (!filters.grupo || filters.grupo === '' || row.grupo === filters.grupo) &&
+      (!filters.severidade || filters.severidade === '' || row.severidade === filters.severidade) &&
+      (!filters.acionado || filters.acionado === '' || (filters.acionado === 'sim' ? row.acionado : !row.acionado)) &&
+      (!filters.abertura || filters.abertura === '' || row.abertura.includes(filters.abertura))
     );
   });
 
@@ -83,7 +83,7 @@ const DataTable: React.FC<DataTableProps> = ({ data, filters }) => {
                     index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'
                   }`}
                 >
-                  <td className="py-3 px-4 text-sm text-gray-900">{row.alerta}</td>
+                  <td className="py-3 px-4 text-sm text-gray-900 font-medium">{row.alerta}</td>
                   <td className="py-3 px-4 text-sm text-gray-600">{row.grupo}</td>
                   <td className="py-3 px-4">
                     <Badge className={`${getStatusColor(row.status)} border-0`}>
@@ -109,6 +109,12 @@ const DataTable: React.FC<DataTableProps> = ({ data, filters }) => {
               ))}
             </tbody>
           </table>
+          
+          {filteredData.length === 0 && (
+            <div className="text-center py-8 text-gray-500">
+              Nenhum resultado encontrado com os filtros aplicados.
+            </div>
+          )}
         </div>
       </div>
     </Card>
