@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -39,20 +40,18 @@ All colors MUST be HSL.
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Custom dashboard colors */
+    --success: 142 76% 36%;
+    --warning: 45 93% 47%;
+    --info: 204 100% 40%;
   }
 
   .dark {
@@ -91,6 +90,10 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --success: 142 76% 36%;
+    --warning: 45 93% 47%;
+    --info: 204 100% 40%;
   }
 }
 
@@ -102,4 +105,17 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom gradient backgrounds */
+.gradient-success {
+  background: linear-gradient(135deg, hsl(var(--success)) 0%, hsl(var(--success) / 0.8) 100%);
+}
+
+.gradient-warning {
+  background: linear-gradient(135deg, hsl(var(--warning)) 0%, hsl(var(--warning) / 0.8) 100%);
+}
+
+.gradient-info {
+  background: linear-gradient(135deg, hsl(var(--info)) 0%, hsl(var(--info) / 0.8) 100%);
 }
